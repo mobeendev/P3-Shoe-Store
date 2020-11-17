@@ -1,23 +1,63 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import Shoes from './../shoes.json';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import Grid from "@material-ui/core/Grid";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import CardMedia from "@material-ui/core/CardMedia";
+import { makeStyles } from "@material-ui/core/styles";
 
-function ProductItem() {
-    const { id } = useParams();
-    const shoe = Shoes[id];
+function ProductItem({ item }) {
+  const classes = useStyles();
+  console.log(item);
 
-    if (!shoe)
-        return <h2>Product Not Found!</h2>
+  if (!item) return <h2>Product Not Found!</h2>;
 
-    return (
-        <div>
-            <h1>Welcome to Product Item</h1>
-            <div className="link">
-                <h4>{shoe.name}</h4>
-                <img src={shoe.img} height={500} alt="shoe" />
-            </div>
-        </div>
-    );
+  return (
+    <Grid item xs={12} sm={6} md={4}>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.cardMedia}
+          image={item.img}
+          title={item.name}
+        />
+        <CardContent className={classes.cardContent}>
+          <Typography gutterBottom variant="h5" component="h2">
+            {item.name}
+          </Typography>
+        </CardContent>
+        <CardActions className={classes.cardActionContent}>
+          <Button size="medium" variant="contained" color="default">
+            Remove
+          </Button>
+          <Button size="medium" variant="contained" color="primary">
+            Add
+          </Button>
+          $ {item.price}
+        </CardActions>
+      </Card>
+    </Grid>
+  );
 }
 
 export default ProductItem;
+
+const useStyles = makeStyles((theme) => ({
+  card: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+  cardMedia: {
+    paddingTop: "56.25%",
+  },
+  cardContent: {
+    flexGrow: 1,
+  },
+  cardActionContent: {
+    flexGrow: 1,
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+}));

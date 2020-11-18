@@ -1,71 +1,73 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import Link from "@material-ui/core/Link";
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
-  cardMedia: {
-    paddingTop: "56.25%", // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
-}));
-
-const Heading = () => {
+const Heading = (props) => {
+  const { post } = props;
   const classes = useStyles();
   return (
-    <Container maxWidth="sm" component="main" className={classes.heroContent}>
-      <Typography
-        component="h1"
-        variant="h2"
-        align="center"
-        color="textPrimary"
-        gutterBottom
-      >
-        Pricing
-      </Typography>
-      <Typography
-        variant="h5"
-        align="center"
-        color="textSecondary"
-        component="p"
-      >
-        Quickly build an effective pricing table for your potential customers
-        with this layout. It&apos;s built with default Material-UI components
-        with little customization.
-      </Typography>
-    </Container>
+    <Paper
+      className={classes.mainFeaturedPost}
+      style={{
+        backgroundImage: `url(https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1542&q=80)`,
+      }}
+    >
+      <div className={classes.overlay} />
+      <Grid container>
+        <Grid item md={6}>
+          <div className={classes.mainFeaturedPostContent}>
+            <Typography
+              component="h1"
+              variant="h3"
+              color="inherit"
+              gutterBottom
+            >
+              Biggest Sale of Season
+            </Typography>
+            <Typography variant="h5" color="inherit" paragraph>
+              Multiple lines of text that form the lede, informing new readers
+              quickly and efficiently about what's most interesting in this
+              post's contents.
+            </Typography>
+            <Link variant="subtitle1" href="#">
+              Continue reading...{" "}
+            </Link>
+          </div>
+        </Grid>
+      </Grid>
+    </Paper>
   );
 };
 
 export default Heading;
+const useStyles = makeStyles((theme) => ({
+  mainFeaturedPost: {
+    position: "relative",
+    backgroundColor: theme.palette.grey[800],
+    color: theme.palette.common.white,
+    marginBottom: theme.spacing(4),
+    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: "rgba(0,0,0,.3)",
+  },
+  mainFeaturedPostContent: {
+    position: "relative",
+    padding: theme.spacing(3),
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(6),
+      paddingRight: 0,
+    },
+  },
+}));

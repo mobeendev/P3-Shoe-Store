@@ -17,15 +17,6 @@ function Copyright() {
     </Typography>
   );
 }
-
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    // marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
-  },
-}));
-
 export default function Footer(props) {
   const classes = useStyles();
   const { description, title } = props;
@@ -34,7 +25,7 @@ export default function Footer(props) {
     <footer className={classes.footer}>
       <Container maxWidth="lg">
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          {title}
         </Typography>
         <Typography
           variant="subtitle1"
@@ -42,7 +33,7 @@ export default function Footer(props) {
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          {description}
         </Typography>
         <Copyright />
       </Container>
@@ -54,3 +45,11 @@ Footer.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
 };
+
+const useStyles = makeStyles((theme) => ({
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    // marginTop: theme.spacing(8),
+    padding: theme.spacing(6, 0),
+  },
+}));

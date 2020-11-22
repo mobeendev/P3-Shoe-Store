@@ -7,10 +7,10 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { CartContext } from "../context/CartContext";
 function ProductItem({ item }) {
   const classes = useStyles();
-  console.log(item);
+  const { addItem, cartGroupedByItems } = React.useContext(CartContext);
 
   if (!item) return <h2>Product Not Found!</h2>;
 
@@ -31,7 +31,12 @@ function ProductItem({ item }) {
           <Button size="medium" variant="contained" color="default">
             Remove
           </Button>
-          <Button size="medium" variant="contained" color="primary">
+          <Button
+            size="medium"
+            variant="contained"
+            color="primary"
+            onClick={() => addItem(item.sku)}
+          >
             Add
           </Button>
           $ {item.price}

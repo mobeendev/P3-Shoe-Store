@@ -81,7 +81,7 @@ export default function ButtonAppBar() {
               </Typography>
             </NavLink>
             <NavLink
-              to="/about"
+              to="/cart"
               color="textPrimary"
               href="#"
               className={classes.link}

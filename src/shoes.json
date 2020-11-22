@@ -1,38 +1,44 @@
-{
-    "air-jordan-3-valor-blue": {
+[
+   { 
+      "sku": 123,
       "name": "VALOUR BLUE",
       "price": 231.22,
       "img":
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
     },
-    "jordan-mars-270-london": {
+   { 
+        "sku": 456,
       "name": "JORDAN MARS 270",
       "price": 554.00,
       "img":
         "https://images.unsplash.com/photo-1556048219-bb6978360b84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80"
     },
-    "air-jordan-1-zoom-racer-blue": {
+  {
+      "sku": 765,
       "name": "RACER BLUE",
       "price": 675.90,
       "img":
         "https://images.unsplash.com/photo-1575557503792-10dcabc70237?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
     },
-    "air-jordan-3-valor-blue1": {
+   {
+      "sku": 342,
       "name": "VALOUR BLUE",
       "price": 135.00,
       "img":
         "https://secure-images.nike.com/is/image/DotCom/CT8532_104_A_PREM?$SNKRS_COVER_WD$&align=0,1"
     },
-    "jordan-mars-270-london2": {
+ {
+      "sku": 612,
       "name": "JORDAN MARS 270 LONDON",
       "price": 799.00,
       "img":
         "https://secure-images.nike.com/is/image/DotCom/CV3042_001_A_PREM?$SNKRS_COVER_WD$&align=0,1"
     },
-    "air-jordan-1-zoom-racer-blue3": {
+  {
+      "sku": 654,
       "name": "RACER BLUE",
       "price": 999.50,
       "img":
         "https://images.unsplash.com/photo-1581067675198-463d66478d0e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1239&q=80"
     }
-  }
+]

@@ -3,9 +3,72 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
+import { CartContext } from "../context/CartContext";
+
+export default function ButtonAppBar() {
+  const classes = useStyles();
+
+  const { cart } = React.useContext(CartContext);
+
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar
+        position="static"
+        color="inherit"
+        elevation={0}
+        className={classes.appBar}
+      >
+        <Toolbar className={classes.toolbar}>
+          <Typography variant="h6" color="inherit" className={classes.icon}>
+            Company name
+          </Typography>
+          <nav>
+            <NavLink
+              to="/"
+              color="textPrimary"
+              href="#"
+              className={classes.link}
+            >
+              <Typography variant="button" className={classes.nameText}>
+                Home
+              </Typography>
+            </NavLink>
+            <NavLink
+              to="/product"
+              color="textPrimary"
+              href="#"
+              className={classes.link}
+            >
+              <Typography variant="button" className={classes.title}>
+                Products
+              </Typography>
+            </NavLink>
+
+            <NavLink to="/cart">
+              <IconButton
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge
+                  badgeContent={cart.length ? cart.length : 0}
+                  color="secondary"
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </NavLink>
+          </nav>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -42,57 +105,3 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(100),
   },
 }));
-
-export default function ButtonAppBar() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="static"
-        color="inherit"
-        elevation={0}
-        className={classes.appBar}
-      >
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h6" color="inherit" className={classes.icon}>
-            Company name
-          </Typography>
-          <nav>
-            <NavLink
-              to="/"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              <Typography variant="button" className={classes.nameText}>
-                Home
-              </Typography>
-            </NavLink>
-            <NavLink
-              to="/product"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              <Typography variant="button" className={classes.title}>
-                Products
-              </Typography>
-            </NavLink>
-            <NavLink
-              to="/cart"
-              color="textPrimary"
-              href="#"
-              className={classes.link}
-            >
-              <Typography variant="button" className={classes.nameText}>
-                Cart
-              </Typography>
-            </NavLink>
-          </nav>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}

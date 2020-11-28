@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { CartContext } from "../context/CartContext";
 function ProductItem({ item }) {
   const classes = useStyles();
-  const { addItem, cartGroupedByItems } = React.useContext(CartContext);
+  const { addItem } = React.useContext(CartContext);
 
   if (!item) return <h2>Product Not Found!</h2>;
 
@@ -23,7 +23,7 @@ function ProductItem({ item }) {
           title={item.name}
         />
         <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h2" component="h2">
             {item.name}
           </Typography>
         </CardContent>

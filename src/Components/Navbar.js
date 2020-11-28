@@ -9,6 +9,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import { CartContext } from "../context/CartContext";
+import { ClickAwayListener } from "@material-ui/core";
 
 export default function ButtonAppBar() {
   const classes = useStyles();
@@ -51,10 +52,7 @@ export default function ButtonAppBar() {
             </NavLink>
 
             <NavLink to="/cart">
-              <IconButton
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
+              <IconButton aria-label="cart items" color="inherit">
                 <Badge
                   badgeContent={cart.length ? cart.length : 0}
                   color="secondary"

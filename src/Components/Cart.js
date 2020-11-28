@@ -15,54 +15,76 @@ import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 export default function Cart() {
   const classes = useStyles();
   const {
-    addItem,
     removeItem,
     cartGroupedByItems,
     totalPrice,
     cart,
+    addItem,
   } = React.useContext(CartContext);
 
   return (
     <Container className={classes.container} maxWidth="md">
       <List className={classes.root}>
-        {cartGroupedByItems.map((product, index) => (
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src={product.img} />
-            </ListItemAvatar>
-            <ListItemText
-              primary={product.name}
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    Price - {product.price}
-                  </Typography>
+        {cartGroupedByItems.length ? (
+          cartGroupedByItems.map((product, index) => (
+            <ListItem alignItems="flex-start" key={index}>
+              <ListItemAvatar>
+                <Avatar alt="Remy Sharp" src={product.img} />
+              </ListItemAvatar>
+              <ListItemText
+                primary={product.name}
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      component="span"
+                      className={classes.inline}
+                      color="textPrimary"
+                    >
+                      Price - {product.price}
+                    </Typography>
 
-                  <Typography
-                    component="span"
-                    variant="body5"
-                    className={classes.inline}
-                    xw
-                  >
-                    Total Items - {product.quantity}
-                  </Typography>
-                </React.Fragment>
-              }
-            />
-            <IconButton aria-label="delete">
-              <RemoveCircleOutlineIcon />
-            </IconButton>
-            <IconButton color="primary" aria-label="add to shopping cart">
-              <AddIcon />
-            </IconButton>
-          </ListItem>
-        ))}
-        <Divider variant="inset" component="li" />
+                    <Typography component="span" className={classes.inline}>
+                      Total Items - {product.quantity}
+                    </Typography>
+                  </React.Fragment>
+                }
+              />
+              <IconButton
+                aria-label="delete"
+                onClick={() => removeItem(product.sku)}
+              >
+                <RemoveCircleOutlineIcon />
+              </IconButton>
+              <IconButton
+                color="primary"
+                aria-label="add to shopping cart"
+                onClick={() => addItem(product.sku)}
+              >
+                <AddIcon />
+              </IconButton>
+            </ListItem>
+          ))
+        ) : (
+          <List component="nav" aria-label="secondary">
+            <ListItem>
+              <Typography component="span" className={classes.inline}>
+                No items found!
+              </Typography>
+            </ListItem>
+          </List>
+        )}
+      </List>
+      <Divider />
+      <List component="nav" aria-label="secondary mailbox folder">
+        <ListItem>
+          <Typography component="span" className={classes.inline}>
+            Total Price
+          </Typography>
+          <ListItemText primary=" :" />
+          <Typography component="span" className={classes.inline}>
+            {totalPrice}
+          </Typography>
+        </ListItem>
       </List>
     </Container>
   );

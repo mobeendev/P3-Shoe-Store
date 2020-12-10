@@ -41,10 +41,10 @@ export default function Footer(props) {
   );
 }
 
-Footer.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string,
-};
+// Footer.propTypes = {
+//   description: PropTypes.string,
+//   title: PropTypes.string,
+// };
 
 const useStyles = makeStyles((theme) => ({
   footer: {

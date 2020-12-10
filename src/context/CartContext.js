@@ -41,6 +41,10 @@ export function CartProvider({ children }) {
     }, []);
   }
 
+  function presentInCart(sku) {
+    return state.cart.some((product) => product.sku === sku);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -50,6 +54,7 @@ export function CartProvider({ children }) {
         cart: state.cart,
         cartGroupedByItems: groupCartItems(),
         countItemsInCart,
+        presentInCart,
         totalPrice: totalPrice(),
       }}
     >

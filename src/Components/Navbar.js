@@ -14,7 +14,7 @@ import { ClickAwayListener } from "@material-ui/core";
 export default function ButtonAppBar() {
   const classes = useStyles();
 
-  const { cart } = React.useContext(CartContext);
+  const { cart, cartGroupedByItems } = React.useContext(CartContext);
 
   return (
     <div className={classes.root}>
@@ -54,7 +54,9 @@ export default function ButtonAppBar() {
             <NavLink to="/cart">
               <IconButton aria-label="cart items" color="inherit">
                 <Badge
-                  badgeContent={cart.length ? cart.length : 0}
+                  badgeContent={
+                    cartGroupedByItems.length ? cartGroupedByItems.length : 0
+                  }
                   color="secondary"
                 >
                   <ShoppingCartIcon />
@@ -100,6 +102,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   icon: {
-    marginRight: theme.spacing(100),
+    marginRight: theme.spacing(90),
   },
 }));
